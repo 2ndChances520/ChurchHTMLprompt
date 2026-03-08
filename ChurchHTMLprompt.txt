@@ -1,0 +1,277 @@
+Below is a **copy-and-paste prompt template** a church can fill in and then paste into an AI website generator.
+It is designed to **force the AI to output a single self-contained HTML file** using **HTML + CSS + JS + React + Three.js** with **no external build tools**.
+
+I made it **very simple to fill in** with `[PUT YOUR INFO HERE]` placeholders so churches can just replace the text.
+
+You can copy this whole block and give it to them.
+
+---
+
+TITLE: Single-File Church Website Generator Prompt
+
+You are an expert front-end developer.
+Your task is to generate a **complete, production-ready church website contained in ONE single HTML file**.
+
+IMPORTANT REQUIREMENTS:
+
+* Output **ONLY ONE HTML FILE**
+* The entire site must run when the file is opened locally
+* Do NOT output explanations
+* Do NOT split into multiple files
+* Use **HTML + CSS + JavaScript**
+* Use **React (via CDN)** for components
+* Use **Three.js (via CDN)** for a simple animated background
+* Include all CSS inside `<style>`
+* Include all JS inside `<script>`
+* Must work without a build step
+
+The design should feel:
+
+* welcoming
+* modern but simple
+* accessible for older visitors
+* mobile friendly
+
+---
+
+CHURCH INFORMATION
+
+Church Name: [PUT CHURCH NAME HERE]
+
+Tagline or Mission Statement:
+[PUT TAGLINE OR MISSION HERE]
+
+Denomination (if any):
+[PUT DENOMINATION OR LEAVE BLANK]
+
+Church Address:
+[PUT ADDRESS HERE]
+
+City / State / Zip:
+[PUT LOCATION HERE]
+
+Phone Number:
+[PUT PHONE NUMBER HERE]
+
+Email Address:
+[PUT EMAIL HERE]
+
+Website (optional):
+[PUT WEBSITE OR LEAVE BLANK]
+
+---
+
+SERVICE TIMES
+
+Sunday Morning Service:
+[PUT TIME HERE]
+
+Sunday Evening Service:
+[PUT TIME OR NONE]
+
+Wednesday Bible Study:
+[PUT TIME OR NONE]
+
+Other Weekly Gatherings:
+[PUT DETAILS HERE]
+
+---
+
+PASTOR / STAFF
+
+Lead Pastor Name:
+[PUT NAME]
+
+Short Bio:
+[PUT SHORT BIO]
+
+Additional Staff (optional):
+[PUT NAMES AND ROLES]
+
+---
+
+MINISTRIES
+
+List the ministries offered by the church:
+
+Youth Ministry:
+[PUT DESCRIPTION]
+
+Children's Ministry:
+[PUT DESCRIPTION]
+
+Men's Ministry:
+[PUT DESCRIPTION]
+
+Women's Ministry:
+[PUT DESCRIPTION]
+
+Community Outreach:
+[PUT DESCRIPTION]
+
+Other Ministries:
+[PUT DETAILS]
+
+---
+
+UPCOMING EVENTS
+
+Event 1:
+[EVENT NAME + DATE + SHORT DESCRIPTION]
+
+Event 2:
+[EVENT NAME + DATE + SHORT DESCRIPTION]
+
+Event 3:
+[EVENT NAME + DATE + SHORT DESCRIPTION]
+
+---
+
+SERMONS
+
+Latest Sermon Title:
+[PUT TITLE]
+
+Sermon Description:
+[PUT SHORT DESCRIPTION]
+
+Video or Audio Link (optional):
+[PUT LINK]
+
+---
+
+GIVING
+
+Online Giving Link:
+[PUT LINK]
+
+Short Giving Message:
+[PUT MESSAGE]
+
+---
+
+VISIT US SECTION
+
+Write a friendly message welcoming first-time visitors:
+[PUT MESSAGE HERE]
+
+---
+
+SOCIAL MEDIA
+
+Facebook:
+[PUT LINK]
+
+YouTube:
+[PUT LINK]
+
+Instagram:
+[PUT LINK]
+
+---
+
+DESIGN FEATURES REQUIRED
+
+The website must include:
+
+1. Hero section with church name and welcome message
+2. Navigation menu with smooth scrolling
+3. About section
+4. Service times section
+5. Ministries section
+6. Events section
+7. Sermons section
+8. Giving section
+9. Contact section with form
+10. Google map embed placeholder
+11. Footer with social links
+
+---
+
+TECH FEATURES REQUIRED
+
+Use React components for:
+
+* Navbar
+* Hero section
+* Ministries cards
+* Events list
+* Sermon display
+* Contact form
+* Footer
+
+Use Three.js to create a subtle animated background such as:
+
+* floating particles
+* soft glowing cross shape
+* gentle star field
+
+The animation must be lightweight.
+
+---
+
+STYLE
+
+* Warm colors
+* Clean typography
+* Large readable text
+* Card-based layout
+* Soft shadows
+* Smooth animations
+
+---
+
+FINAL OUTPUT FORMAT
+
+Return ONLY the full HTML file structured like:
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+ALL CSS HERE
+</style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script src="react cdn"></script>
+
+<script src="react dom cdn"></script>
+
+<script src="three.js cdn"></script>
+
+<script>
+ALL JAVASCRIPT AND REACT CODE HERE
+</script>
+
+</body>
+</html>
+
+Do not include explanations.
+Only output the final working HTML file.
+
+---
+
+✅ **Why this works well**
+
+* Churches **only replace the brackets**
+* AI receives **clear structure**
+* Forces **single-file output**
+* Includes **React + Three.js**
+* Produces a **complete website**
+
+---
+
+💡 If you'd like, I can also create a **much more powerful “v2 prompt”** that will generate:
+
+* animated **3D church background**
+* **sermon archive**
+* **event calendar**
+* **prayer request form**
+* **CMS-like editable sections**
+
+It still runs in **one HTML file**, but looks like a **$5k custom church website**.
