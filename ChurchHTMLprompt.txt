@@ -5,7 +5,7 @@ I made it **very simple to fill in** with `[PUT YOUR INFO HERE]` placeholders so
 
 You can copy this whole block and give it to them.
 
----
+---COPY BELOW----------------- lines 10-257
 
 TITLE: Single-File Church Website Generator Prompt
 
@@ -254,7 +254,12 @@ ALL JAVASCRIPT AND REACT CODE HERE
 Do not include explanations.
 Only output the final working HTML file.
 
----
+---COPY ABOVE 
+
+
+
+
+------------------------------------------------------
 
 ✅ **Why this works well**
 
@@ -275,3 +280,4 @@ Only output the final working HTML file.
 * **CMS-like editable sections**
 
 It still runs in **one HTML file**, but looks like a **$5k custom church website**.
+
