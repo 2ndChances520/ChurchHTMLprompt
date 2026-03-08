@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Church Website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+:root{
+  --primary:#8B5E3C;
+  --accent:#E6C9A8;
+  --light:#FAF7F2;
+  --dark:#3A2E25;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--light);
+  color:var(--dark);
+}
+
+#bg{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  background:white;
+  box-shadow:0 2px 8px rgba(0,0,0,.1);
+  z-index:10;
+}
+
+.nav-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  max-width:1100px;
+  margin:auto;
+  padding:15px;
+}
+
+.nav-links a{
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--dark);
+  font-weight:bold;
+}
+
+section{
+  padding:70px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.hero{
+  text-align:center;
+  padding:120px 20px;
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:20px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.service-times ul{
+  list-style:none;
+  padding:0;
+}
+
+.service-times li{
+  padding:10px 0;
+  font-size:18px;
+}
+
+.events li{
+  margin-bottom:15px;
+}
+
+.sermon{
+  background:white;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+form{
+  display:grid;
+  gap:12px;
+}
+
+input, textarea{
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+button{
+  background:var(--primary);
+  color:white;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+footer{
+  background:#2f2f2f;
+  color:white;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.social a{
+  color:white;
+  margin:0 10px;
+  text-decoration:none;
+}
+
+.map-placeholder{
+  background:#ddd;
+  height:300px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+
+<script>
+
+const e = React.createElement
+
+function scrollToId(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"})
+}
+
+function Navbar(){
+  return e("nav",null,
+    e("div",{className:"nav-container"},
+      e("strong",null,"Church Name"),
+      e("div",{className:"nav-links"},
+        e("a",{href:"#",onClick:()=>scrollToId("about")},"About"),
+        e("a",{href:"#",onClick:()=>scrollToId("services")},"Services"),
+        e("a",{href:"#",onClick:()=>scrollToId("ministries")},"Ministries"),
+        e("a",{href:"#",onClick:()=>scrollToId("events")},"Events"),
+        e("a",{href:"#",onClick:()=>scrollToId("sermon")},"Sermons"),
+        e("a",{href:"#",onClick:()=>scrollToId("giving")},"Giving"),
+        e("a",{href:"#",onClick:()=>scrollToId("contact")},"Contact")
+      )
+    )
+  )
+}
+
+function Hero(){
+  return e("section",{className:"hero"},
+    e("h1",null,"Church Name"),
+    e("p",null,"A welcoming place to grow in faith and community.")
+  )
+}
+
+function About(){
+  return e("section",{id:"about"},
+    e("h2",null,"About Our Church"),
+    e("p",null,"Our church is dedicated to sharing the love of Christ, serving our community, and helping people grow in faith together.")
+  )
+}
+
+function Services(){
+  return e("section",{id:"services",className:"service-times"},
+    e("h2",null,"Service Times"),
+    e("ul",null,
+      e("li",null,"Sunday Morning: 10:00 AM"),
+      e("li",null,"Sunday Evening: 6:00 PM"),
+      e("li",null,"Wednesday Bible Study: 7:00 PM")
+    )
+  )
+}
+
+function Ministries(){
+
+  const list = [
+    {title:"Youth Ministry",desc:"Helping teens grow in faith and friendships."},
+    {title:"Children's Ministry",desc:"Fun and safe place for children to learn about God."},
+    {title:"Men's Ministry",desc:"Building strong Christian men through fellowship."},
+    {title:"Women's Ministry",desc:"Encouragement and spiritual growth for women."},
+    {title:"Community Outreach",desc:"Serving our neighbors and local community."}
+  ]
+
+  return e("section",{id:"ministries"},
+    e("h2",null,"Ministries"),
+    e("div",{className:"cards"},
+      list.map(m =>
+        e("div",{className:"card"},
+          e("h3",null,m.title),
+          e("p",null,m.desc)
+        )
+      )
+    )
+  )
+}
+
+function Events(){
+
+  const events=[
+    {title:"Community Potluck",date:"June 10",desc:"Join us for food and fellowship."},
+    {title:"Vacation Bible School",date:"July 15",desc:"Fun week for kids."},
+    {title:"Youth Camp",date:"August 2",desc:"A weekend retreat for teens."}
+  ]
+
+  return e("section",{id:"events"},
+    e("h2",null,"Upcoming Events"),
+    e("ul",{className:"events"},
+      events.map(ev =>
+        e("li",null,
+          e("strong",null,ev.title+" - "+ev.date),
+          e("p",null,ev.desc)
+        )
+      )
+    )
+  )
+}
+
+function Sermon(){
+  return e("section",{id:"sermon"},
+    e("h2",null,"Latest Sermon"),
+    e("div",{className:"sermon"},
+      e("h3",null,"Walking in Faith"),
+      e("p",null,"A message about trusting God in every season of life."),
+      e("a",{href:"#"},"Watch or Listen")
+    )
+  )
+}
+
+function Giving(){
+  return e("section",{id:"giving"},
+    e("h2",null,"Online Giving"),
+    e("p",null,"Your generosity helps support our ministry and outreach."),
+    e("button",{onClick:()=>window.open("#")},"Give Online")
+  )
+}
+
+function Contact(){
+  return e("section",{id:"contact"},
+    e("h2",null,"Visit Us"),
+    e("p",null,"We would love to meet you. Join us this Sunday!"),
+    e("div",{className:"map-placeholder"},"Google Map Placeholder"),
+    e("h3",null,"Contact Us"),
+    e("form",null,
+      e("input",{placeholder:"Name"}),
+      e("input",{placeholder:"Email"}),
+      e("textarea",{placeholder:"Message"}),
+      e("button",{type:"submit"},"Send Message")
+    )
+  )
+}
+
+function Footer(){
+  return e("footer",null,
+    e("p",null,"Church Name"),
+    e("p",null,"123 Church Street, City, State"),
+    e("div",{className:"social"},
+      e("a",{href:"#"},"Facebook"),
+      e("a",{href:"#"},"YouTube"),
+      e("a",{href:"#"},"Instagram")
+    )
+  )
+}
+
+function App(){
+  return e("div",null,
+    e(Navbar),
+    e(Hero),
+    e(About),
+    e(Services),
+    e(Ministries),
+    e(Events),
+    e(Sermon),
+    e(Giving),
+    e(Contact),
+    e(Footer)
+  )
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(e(App))
+
+/* THREE JS BACKGROUND */
+
+const scene=new THREE.Scene()
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000)
+
+const renderer=new THREE.WebGLRenderer({
+  canvas:document.getElementById("bg"),
+  alpha:true
+})
+
+renderer.setSize(window.innerWidth,window.innerHeight)
+
+const geometry=new THREE.BufferGeometry()
+const vertices=[]
+
+for(let i=0;i<2000;i++){
+  vertices.push(
+    (Math.random()-0.5)*1000,
+    (Math.random()-0.5)*1000,
+    (Math.random()-0.5)*1000
+  )
+}
+
+geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3))
+
+const material=new THREE.PointsMaterial({
+  color:0xffffff,
+  size:2
+})
+
+const points=new THREE.Points(geometry,material)
+scene.add(points)
+
+camera.position.z=300
+
+function animate(){
+  requestAnimationFrame(animate)
+  points.rotation.y +=0.0007
+  points.rotation.x +=0.0005
+  renderer.render(scene,camera)
+}
+
+animate()
+
+window.addEventListener("resize",()=>{
+  camera.aspect=window.innerWidth/window.innerHeight
+  camera.updateProjectionMatrix()
+  renderer.setSize(window.innerWidth,window.innerHeight)
+})
+
+</script>
+
+</body>
+</html>
